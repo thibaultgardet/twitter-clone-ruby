@@ -1,39 +1,110 @@
-# Setup
+“twitter-like” application presentation
 
-Vous rendre dans le répertoire ou se trouve ce README en console.
 
-Lancez:
+1) Database diagram
 
-$ gem install bundler
-$ bundle install
+Check the file named " erd.pdf"
 
-Pour vérifier si l'installation s'est bien déroulée, lancez:
+2) List of the principal gem used and why using them
 
-$ bundle exec rails -v
+Devise:
+	User authentication.
+	To do logins, logouts, user account registration, cancelation and edition.
 
-... qui devrait vous donner: "Rails 4.2.5"
+Carrierwave
+	Image Uploads
 
-Ensuite créez votre base de donnée SQLite en faisant:
+Cloudinary
+	Complementary to carrierwave, allow uploads to an 3 part service, since Heroku doesn't allows file uploads
 
-$ bundle exec rake db:create
-$ bundle exec rake db:create RAILS_ENV=test
+3) What strategies used for testing
 
-# Les Tests
+Model and controllers tests using Rspec
 
-Les fichiers sont localisés dans /spec/models/
-Pour les lancer, faites:
+All the tests check for the rightness of the behaviour of the code.
 
-$ bundle exec rspec spec/
+It was used test driven development, so, the tests where built before the code, on a test, fail, refactor cycle. 
 
-# Les Migrations
 
-Utilisez des migrations pour créer et modifier votre base de données.
+4) What strategies used for pushing it online
 
-Attention, vous ne pouvez pas modifier une migration une fois qu'elle est passée.
+It was published using the heroku toolbelt that uses git to automate the deployment process.
 
-Dans ce cas vous pouvez soit créer une migration de plus pour corriger votre erreur,
-soit détruire et recréer la base de données:
+Heroku was chosen because it’s free, and it’s easy to deploy rails apps.
 
-$ bundle exec rake db:drop RAILS_ENV=test
-$ bundle exec rake db:create RAILS_ENV=test
-$ bundle exec rake db:migrate RAILS_ENV=test
+Git was chosen because is the defacto industry standart given its qualities.
+
+ Link to the project : https://quiet-crag-8235.herokuapp.com
+
+5) List of all the features
+
+User
+user registration
+user authentication
+account cancelation
+account edition
+follow / unfollow other users
+
+Tweets
+post
+like
+retweet
+reply
+
+Search
+Search users and /or tweets
+
+User Reccomendation
+List of users not followed by the logged in user.
+
+Notifications
+
+The user receives an notification ( count on the menu item on top )
+when another user likes, replies or retweet one of his tweets.
+When another user follows him.
+
+
+8) To summarize 
+
+We have code all the features that was requested in the project brief but we would have loved to have more time to develop the features below (that are displayed in the mockup) : 
+
+=add picture / video to tweets 
+pictures will be upload and shown, videos will be embbed, youtube only.
+pictures and videos must appear on a list on the dashboard. 
+Clicking on them will open
+image upload to heroku 
+
+=icon notification and notifications 
+
+list all the users tweets that where liked
+list all the users that followed 
+increment the counter on the icon on new 
+clear when the notifications page is accessed
+
+=private message 
+a user that follows and is followed by another user can
+send private messages
+it must find the user and click on the button "private message"
+it will be taken to a form where it can sent the message
+
+=read messages
+page with all the messages received
+button to reply
+separated into read/unread
+the icon must show the counter of messages
+clear when the messages page is accessed
+
+=person search 
+on the search page, search for tweets and people
+they must be listed separeted.
+
+=add location to profile 
+add location field to user
+add a maps component to search for location coordinates on the profile page
+
+=retweets 
+retweet something on the timeline to your followers
+
+=email confirmation 
+setup email
+needs an email account user and password ( gmail, zoho, sendgrid )
